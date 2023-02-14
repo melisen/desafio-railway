@@ -16,9 +16,13 @@ const {normalizr, normalize, schema, denormalize} = require("normalizr");
 const bcrypt = require("bcrypt");
 const parseArgs = require("minimist");
 const logger = require("./winston-logger");
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
 
-dotenv.config()
+
+if (process.env.MODE != 'production'){
+  dotenv.config()
+}
+
 const MODE = process.env.MODE;
 const DATABASEURL = process.env.DATABASEURL;
 
