@@ -67,14 +67,7 @@ app.set('views', './views/')
  app.set("view engine", "hbs");
 
 
-const redis = require("redis");
-const client = redis.createClient({
-  legacyMode: true,
-});
-client.connect()
-.then(() => logger.log("info", "Connected to Redis"))
-.catch((e) => logger.log("error", e));
-const RedisStore = require("connect-redis")(session);
+
 
 
 
@@ -166,10 +159,18 @@ passport.deserializeUser((id, done) => {
 });
 
 //SESSION
+const redis = require("redis");
+const client = redis.createClient({
+  legacyMode: true,
+});
+client.connect()
+.catch((e) => logger.log("error", e));
+const RedisStore = require("connect-redis")(session);
+
 
 app.use(
   session({
-    store: new RedisStore({ host: "0.0.0.0", port: 6379, client, ttl: 300 }),
+    store: new RedisStore({ host: "0.0.0.0", port: PORT, client, ttl: 300 }),
     secret: "keyboard cat",
     cookie: {
       httpOnly: false,
