@@ -162,7 +162,7 @@ passport.deserializeUser((id, done) => {
 //SESSION
 app.use(
   session({
-    store: new RedisStore({ host: "localhost", port: 6379, client, ttl: 300 }),
+    store: new RedisStore({ host: "0.0.0.0", port: 6379, client, ttl: 300 }),
     secret: "keyboard cat",
     cookie: {
       httpOnly: false,
