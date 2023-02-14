@@ -72,6 +72,10 @@ app.set('views', './views/')
 const redis = require("redis");
 const client = redis.createClient({
   legacyMode: true,
+  socket: {
+    port: 6379,
+    host: HOST,
+  }
 });
 client.connect()
 .catch((e) => logger.log("error", e));
