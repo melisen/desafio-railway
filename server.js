@@ -68,7 +68,30 @@ app.set('views', './views/')
 
 
 
+//SESSION
+const redis = require("redis");
+const client = redis.createClient({
+  legacyMode: true,
+});
+client.connect()
+.catch((e) => logger.log("error", e));
+const RedisStore = require("connect-redis")(session);
 
+
+app.use(
+  session({
+    store: new RedisStore({ host: HOST, port: PORT, client, ttl: 300 }),
+    secret: "keyboard cat",
+    cookie: {
+      httpOnly: false,
+      secure: false,
+      maxAge: 600000, //10 min
+    },
+    rolling: true,
+    resave: true,
+    saveUninitialized: false,
+  })
+);
 
 
 //MONGO para models Usuarios y Productos
@@ -158,30 +181,7 @@ passport.deserializeUser((id, done) => {
   Usuarios.findById(id, done);
 });
 
-//SESSION
-const redis = require("redis");
-const client = redis.createClient({
-  legacyMode: true,
-});
-client.connect()
-.catch((e) => logger.log("error", e));
-const RedisStore = require("connect-redis")(session);
 
-
-app.use(
-  session({
-    store: new RedisStore({ host: HOST, port: PORT, client, ttl: 300 }),
-    secret: "keyboard cat",
-    cookie: {
-      httpOnly: false,
-      secure: false,
-      maxAge: 600000, //10 min
-    },
-    rolling: true,
-    resave: true,
-    saveUninitialized: false,
-  })
-);
 
 
 app.use(passport.initialize());
