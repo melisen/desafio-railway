@@ -26,7 +26,7 @@ if (process.env.MODE != 'production'){
 const MODE = process.env.MODE;
 const DATABASEURL = process.env.DATABASEURL;
 const PORT = process.env.PORT;
-
+let HOST = '0.0.0.0';
 
 
 
@@ -325,7 +325,7 @@ io.on('connection', async (socket) =>{
 })
 
 
-let HOST = '0.0.0.0';
+
 
         httpServer.listen( PORT, HOST, ()=>{
             console.log('servidor de express escuchando')
