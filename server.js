@@ -25,6 +25,7 @@ if (process.env.MODE != 'production'){
 
 const MODE = process.env.MODE;
 const DATABASEURL = process.env.DATABASEURL;
+const PORT = process.env.PORT;
 
 
 
