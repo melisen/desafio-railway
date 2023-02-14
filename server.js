@@ -170,7 +170,7 @@ const RedisStore = require("connect-redis")(session);
 
 app.use(
   session({
-    store: new RedisStore({ host: "0.0.0.0", port: PORT, client, ttl: 300 }),
+    store: new RedisStore({ host: HOST, port: PORT, client, ttl: 300 }),
     secret: "keyboard cat",
     cookie: {
       httpOnly: false,
@@ -325,9 +325,9 @@ io.on('connection', async (socket) =>{
 })
 
 
+let HOST = '0.0.0.0';
 
-
-        httpServer.listen( PORT, '0.0.0.0', ()=>{
+        httpServer.listen( PORT, HOST, ()=>{
             console.log('servidor de express escuchando')
         })
 
