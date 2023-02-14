@@ -26,6 +26,7 @@ if (process.env.MODE != 'production'){
 const MODE = process.env.MODE;
 const DATABASEURL = process.env.DATABASEURL;
 const PORT = process.env.PORT;
+const PORTREDIS = process.env.PORTREDIS;
 
 
 
@@ -168,7 +169,7 @@ passport.deserializeUser((id, done) => {
 
 app.use(
   session({
-    store: new RedisStore({ host: "0.0.0.0", port: 6379, client, ttl: 300 }),
+    store: new RedisStore({ host: "0.0.0.0", port: PORTREDIS, client, ttl: 300 }),
     secret: "keyboard cat",
     cookie: {
       httpOnly: false,
