@@ -69,31 +69,20 @@ app.set('views', './views/')
 
 
 //SESSION
-const redis = require("redis");
-const client = redis.createClient({
-  legacyMode: true,
-  socket: {
-    port: 6379,
-    host: HOST
-  }
-});
-client.connect()
-.catch((e) => logger.log("error", e));
-const RedisStore = require("connect-redis")(session);
-
-
+const MongoStore = require("connect-mongo");
 app.use(
   session({
-    store: new RedisStore({ host: HOST, port: 6379, client, ttl: 300 }),
-    secret: "keyboard cat",
-    cookie: {
-      httpOnly: false,
-      secure: false,
-      maxAge: 600000, //10 min
-    },
-    rolling: true,
-    resave: true,
-    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: DATABASEURL,
+      mongoOptions: {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      },
+
+  }),
+  secret: "secreto",
+  resave: false,
+  saveUninitialized: false
   })
 );
 
