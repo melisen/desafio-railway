@@ -325,7 +325,7 @@ io.on('connection', async (socket) =>{
 
 
 
-        httpServer.listen( `0.0.0.0:${PORT}`, ()=>{
+        httpServer.listen( PORT, '0.0.0.0', ()=>{
             console.log('servidor de express escuchando')
         })
 
