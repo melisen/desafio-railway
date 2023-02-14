@@ -80,7 +80,7 @@ const RedisStore = require("connect-redis")(session);
 
 app.use(
   session({
-    store: new RedisStore({ host: HOST, port: PORT, client, ttl: 300 }),
+    store: new RedisStore({ host: HOST, port: 6379, client, ttl: 300 }),
     secret: "keyboard cat",
     cookie: {
       httpOnly: false,
