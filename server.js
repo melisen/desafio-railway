@@ -320,7 +320,7 @@ io.on('connection', async (socket) =>{
 
 let HOSTRail;
 
-        httpServer.listen( `0.0.0.0:$PORT`, ()=>{
+        httpServer.listen( '0.0.0.0:8080', ()=>{
             console.log('servidor de express escuchando')
         })
 
