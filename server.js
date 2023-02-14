@@ -24,8 +24,8 @@ const DATABASEURL = process.env.DATABASEURL;
 
 
 
-const argsPORT = parseArgs(process.argv.slice(2));
-const PORT = process.argv[2];
+//const argsPORT = parseArgs(process.argv.slice(2));
+//const PORT = process.argv[2];
 
 const app = express()
 
@@ -318,7 +318,7 @@ io.on('connection', async (socket) =>{
 
 
 
-        httpServer.listen( `0.0.0.0:$PORT`, ()=>{
+        httpServer.listen( PORT, HOST, ()=>{
             console.log('servidor de express escuchando')
         })
 
