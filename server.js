@@ -318,7 +318,7 @@ io.on('connection', async (socket) =>{
 
 
 //EN TERMINAL: $ node server.js --port *numero del puerto* --> para pasarlo como argumento de minimist
-        httpServer.listen(argsPORT.port || 8080, ()=>{
+        httpServer.listen(argsPORT.port || 8080, '0.0.0.0', ()=>{
             console.log('servidor de express escuchando el puerto ', argsPORT.port)
         })
 
