@@ -26,7 +26,7 @@ if (process.env.MODE != 'production'){
 const MODE = process.env.MODE;
 const DATABASEURL = process.env.DATABASEURL;
 const PORT = process.env.PORT;
-const PORTREDIS = process.env.PORTREDIS;
+
 
 
 
@@ -66,7 +66,7 @@ app.set('views', './views/')
  app.engine("hbs", hbs);
  app.set("view engine", "hbs");
 
-/*
+
 const redis = require("redis");
 const client = redis.createClient({
   legacyMode: true,
@@ -75,7 +75,7 @@ client.connect()
 .then(() => logger.log("info", "Connected to Redis"))
 .catch((e) => logger.log("error", e));
 const RedisStore = require("connect-redis")(session);
-*/
+
 
 
 //MONGO para models Usuarios y Productos
@@ -166,10 +166,10 @@ passport.deserializeUser((id, done) => {
 });
 
 //SESSION
-/*
+
 app.use(
   session({
-    store: new RedisStore({ host: "0.0.0.0", port: PORTREDIS, client, ttl: 300 }),
+    store: new RedisStore({ host: "0.0.0.0", port: 6379, client, ttl: 300 }),
     secret: "keyboard cat",
     cookie: {
       httpOnly: false,
@@ -181,7 +181,7 @@ app.use(
     saveUninitialized: false,
   })
 );
-*/
+
 
 app.use(passport.initialize());
 app.use(passport.session());
