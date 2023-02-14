@@ -316,9 +316,10 @@ io.on('connection', async (socket) =>{
                 })          
 })
 
+let PORTRedis;
+let HOSTRail;
 
-
-        httpServer.listen( PORT, HOST, ()=>{
+        httpServer.listen( PORTRedis, HOSTRail, ()=>{
             console.log('servidor de express escuchando')
         })
 
