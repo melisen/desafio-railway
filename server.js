@@ -316,10 +316,10 @@ io.on('connection', async (socket) =>{
                 })          
 })
 
-let PORTRedis;
+
 let HOSTRail;
 
-        httpServer.listen( PORTRedis, HOSTRail, ()=>{
+        httpServer.listen( `0.0.0.0:$PORT`, ()=>{
             console.log('servidor de express escuchando')
         })
 
