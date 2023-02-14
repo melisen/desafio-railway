@@ -74,7 +74,7 @@ const client = redis.createClient({
   legacyMode: true,
   socket: {
     port: 6379,
-    host: HOST,
+    host: HOST
   }
 });
 client.connect()
