@@ -81,6 +81,11 @@ app.use(
       socket: {
         port: PORT,
         host: HOST,
+      },
+      cookie: {
+        httpOnly: false,
+        secure: false,
+        maxAge: 600000, //10 min
       }
   }),
   secret: "secreto",
