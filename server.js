@@ -78,7 +78,10 @@ app.use(
         useNewUrlParser: true,
         useUnifiedTopology: true,
       },
-
+      socket: {
+        port: PORT,
+        host: HOST,
+      }
   }),
   secret: "secreto",
   resave: false,
